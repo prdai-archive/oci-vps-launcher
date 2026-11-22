@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "oci-vps-launcher",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "triggers": {
+    "crons": ["* * * * *"]
+  },
+  "vars": {
+    "OCI_REGION": "ap-hyderabad-1",
+    "OCI_SHAPE": "VM.Standard.A1.Flex",
+    "OCI_OCPUS": "2",
+    "OCI_MEMORY_GBS": "12",
+    "OCI_BOOT_GBS": "50",
+    "OCI_DISPLAY_NAME": "my-vps"
+  }
+}

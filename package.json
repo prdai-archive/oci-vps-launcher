@@ -1,0 +1,14 @@
+{
+  "name": "oci-vps-launcher",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "secrets": "node scripts/build-secrets.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}
