@@ -110,6 +110,12 @@ It prints `signed request ok, matching instances: N`. A `401` means the fingerpr
 
 ## Deploy
 
+Create the KV namespace used for the completion flag, then paste its id into `wrangler.jsonc`:
+
+```sh
+wrangler kv namespace create STATE
+```
+
 ```sh
 npm install
 npx wrangler deploy
@@ -117,6 +123,10 @@ npx wrangler secret bulk .secrets.json
 ```
 
 `wrangler deploy` prints the Worker URL and the `* * * * *` schedule. The first cron runs within a minute of the secrets upload.
+
+After a successful launch the Worker writes `done` to KV. Every later run returns `{"status":"done"}` without calling OCI, so the cron becomes a no-op. To re-arm it after deleting the instance, call the Worker URL with `?reset=1` or delete the KV key.
+
+A Cron Trigger cannot unregister itself. To remove the trigger entirely, set `triggers.crons` to `[]` and redeploy.
 
 ## Observe
 
