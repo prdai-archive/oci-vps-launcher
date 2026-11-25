@@ -12,6 +12,10 @@
       "id": "REPLACE_WITH_KV_NAMESPACE_ID"
     }
   ],
+  // Optional. Requires Email Routing on the zone and a verified destination address.
+  // "send_email": [
+  //   { "name": "EMAIL", "destination_address": "you@example.com" }
+  // ],
   "vars": {
     "OCI_REGION": "ap-hyderabad-1",
     "OCI_SHAPE": "VM.Standard.A1.Flex",
@@ -19,5 +23,8 @@
     "OCI_MEMORY_GBS": "12",
     "OCI_BOOT_GBS": "50",
     "OCI_DISPLAY_NAME": "my-vps"
+    // Optional, used together with the EMAIL binding above.
+    // ,"NOTIFY_FROM": "notify@yourdomain.tld"
+    // ,"NOTIFY_TO": "you@example.com"
   }
 }

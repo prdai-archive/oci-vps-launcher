@@ -148,6 +148,12 @@ When capacity appears:
 
 Later runs log `{"status":"exists","id":"..."}`. You can also trigger a run over HTTP by requesting the Worker URL.
 
+## Optional: email notification
+
+The Worker can send one email when `my-vps` is created or first seen. Uncomment the `send_email` binding in `wrangler.jsonc`, set `NOTIFY_FROM` and `NOTIFY_TO`, and redeploy. The sending zone must have Email Routing enabled, and the destination address must be added and verified. The binding only allows sending to that one destination.
+
+A `notified` KV key prevents duplicates, and a failed send is retried on the next cron run. `?reset=1` clears both `done` and `notified`.
+
 ## Notes
 
 - Always Free compute is home-region only, and the home region cannot be changed. A launch in another region is billable.
